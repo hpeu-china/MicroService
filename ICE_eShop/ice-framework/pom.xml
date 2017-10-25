@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>Ice_eShop</groupId>
+		<artifactId>Ice_eShop</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<name>ice-framework</name>
+	<artifactId>ice-framework</artifactId>
+	<packaging>jar</packaging>
+	<properties>
+		<ant.ice.version>4.0.0</ant.ice.version>
+		<ice.framework.version>0.0.1-SNAPSHOT</ice.framework.version>
+		<fastjson.version>1.2.14</fastjson.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.zeroc</groupId>
+			<artifactId>icebox</artifactId>
+			<version>${ice.version}</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+	</dependencies>
+
+</project>

@@ -1,0 +1,77 @@
+<icegrid>
+	<application name="MyApp">
+		<properties id="props">
+			<property name="Ice.ThreadPool.Server.Size" value="10" />
+		</properties>
+		<server-template id="AccountServiceTemplate">
+			<parameter name="id" />
+			<icebox id="AccountService${id}" exe="java" activation="on-demand" >
+				<properties>
+					<properties refid="props" />
+				</properties>
+				<option>com.zeroc.IceBox.Server</option>
+				<env>CLASSPATH=/root/ice_eshop/auth-service/target/*</env>
+				<service name="AccountService"
+					entry="com.mycat.eshop.service.impl.AccountServiceBox">
+					<adapter name="AccountService" id="AccountService${id}"
+						endpoints="default" replica-group="AccountServiceRep">
+					</adapter>
+				</service>
+			</icebox>
+		</server-template>
+		<server-template id="ProductServiceTemplate">
+			<parameter name="id" />
+			<icebox id="ProductService${id}" exe="java" activation="on-demand" >
+				<properties>
+					<properties refid="props" />
+				</properties>
+				<option>com.zeroc.IceBox.Server</option>
+				<env>CLASSPATH=/root/ice_eshop/product-service/target/*</env>
+				<service name="ProductService"
+					entry="com.mycat.eshop.service.impl.ProductServiceBox">
+					<adapter name="ProductService" id="ProductService${id}"
+						endpoints="default" replica-group="ProductServiceRep">
+					</adapter>
+				</service>
+			</icebox>
+		</server-template>
+				<server-template id="CartServiceTemplate">
+			<parameter name="id" />
+			<icebox id="CartService${id}" exe="java" activation="on-demand" >
+				<properties>
+					<properties refid="props" />
+				</properties>
+				<option>com.zeroc.IceBox.Server</option>
+				<env>CLASSPATH=/root/ice_eshop/cart-service/target/*</env>
+				<service name="CartService"
+					entry="com.mycat.eshop.service.impl.CartServiceBox">
+					<adapter name="CartService" id="CartService${id}"
+						endpoints="default" replica-group="CartServiceRep">
+					</adapter>
+				</service>
+			</icebox>
+		</server-template>
+		
+		<replica-group id="AccountServiceRep">
+			<load-balancing type="round-robin" n-replicas="0" />
+			<object identity="AccountService" type="::eshop::service::AccountService" />
+		</replica-group>
+		<replica-group id="ProductServiceRep">
+			<load-balancing type="round-robin" n-replicas="0" />
+			<object identity="ProductService" type="::eshop::service::ProductService" />
+		</replica-group>
+		<replica-group id="CartServiceRep">
+			<load-balancing type="round-robin" n-replicas="0" />
+			<object identity="CartService" type="::eshop::service::CartService" />
+		</replica-group>
+		<node name="node1">
+			<server-instance template="AccountServiceTemplate"		id="1" />
+			<server-instance template="AccountServiceTemplate"		id="2" />
+			<server-instance template="ProductServiceTemplate"		id="1" />
+			<server-instance template="CartServiceTemplate"		        id="1" />
+		</node>
+		<node name="node2">
+
+		</node>
+	</application>
+</icegrid>

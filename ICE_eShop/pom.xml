@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Ice_eShop</groupId>
+	<artifactId>Ice_eShop</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Ice_eShop</name>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<source.encoding>UTF-8</source.encoding>
+		<ice.version>3.7.0</ice.version>
+		<slf4j.version>1.7.21</slf4j.version>
+		<ice.framework.version>${version}</ice.framework.version>
+		<ice-auth-service.version>0.0.1-SNAPSHOT</ice-auth-service.version>
+		<ice-cart-service.version>0.0.1-SNAPSHOT</ice-cart-service.version>
+		<ice-product-service.version>0.0.1-SNAPSHOT</ice-product-service.version>
+	</properties>
+
+	<dependencies>
+		<!-- ice -->
+		<dependency>
+			<groupId>com.zeroc</groupId>
+			<artifactId>ice</artifactId>
+			<version>${ice.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+
+	</dependencies>
+	<modules>
+		<module>ice-framework</module>
+		<module>ice-interface</module>
+		<module>auth-service</module>
+		<module>eshop-web</module>
+		<module>product-service</module>
+		<module>cart-service</module>
+	</modules>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java </directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources </directory>
+			</resource>
+			<resource>
+				<directory>src/test/java </directory>
+			</resource>
+			<resource>
+				<directory>src/test/resources </directory>
+			</resource>
+
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
