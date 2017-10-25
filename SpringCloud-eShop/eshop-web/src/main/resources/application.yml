@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: eshop-web
+info:
+  app:
+     name: ${spring.application.name}
+     version: v1.0.0
+server:
+  port: 8033
+  context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+  
+logging:
+  config: classpath:logback.xml
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    healthcheck:
+       enabled: true
+    registerWithEureka: false
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8030/eureka/
+  

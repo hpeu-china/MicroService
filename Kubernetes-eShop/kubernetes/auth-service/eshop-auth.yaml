@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: eshop-auth-svc
+  labels:
+    app: eshop-auth-svc
+spec:
+  ports:
+    - port: 8034
+  selector:
+    app: eshop-auth-deploy
+    tier: frontend
+  clusterIP: None
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: eshop-auth-deploy
+  labels:
+    app: eshop-auth-deploy
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: eshop-auth-deploy
+        tier: frontend
+    spec:
+      containers:
+      - image: eshop-auth-image:v1
+        name: eshop-auth
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/app/eshop_service/config
+        ports:
+        - containerPort: 8034
+      volumes:
+        - name: config-volume
+          configMap:
+            name: eshop-configmap
+            items:
+            - key: eshop-auth-conf
+              path: application.yml

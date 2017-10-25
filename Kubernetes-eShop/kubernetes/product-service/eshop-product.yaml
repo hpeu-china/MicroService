@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: eshop-product-svc
+  labels:
+    app: eshop-product-svc
+spec:
+  ports:
+    - port: 8036
+  selector:
+    app: eshop-product-deploy
+    tier: frontend
+  clusterIP: None
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: eshop-product-deploy
+  labels:
+    app: eshop-product-deploy
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: eshop-product-deploy
+        tier: frontend
+    spec:
+      containers:
+      - image: eshop-product-image:v1
+        name: eshop-product
+        ports:
+        - containerPort: 8036
+        volumeMounts:
+          - name: config-volume
+            mountPath: /opt/app/eshop_service/config
+      volumes:
+      - name: config-volume
+        configMap:
+          name: eshop-configmap
+          items:
+          - key: eshop-product-conf
+            path: application.yml
