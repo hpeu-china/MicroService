@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date: 27/08/2017
  * @author: Leader us
  */
-@FeignClient(name = "micro-gateway", fallback = AccountService.HystrixAccountService.class)
+@FeignClient(name = "eshop-zuul-gateway", fallback = AccountService.HystrixAccountService.class)
 public interface AccountService {
 	@PostMapping("/account/login")
 	String login(@RequestParam("username") String username, @RequestParam("password") String password);

@@ -1,11 +1,8 @@
 package com.mycat.monoeshop.config;
 
-import java.io.IOException;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -21,8 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.common.collect.Maps;
-import com.mycat.monoeshop.App;
+import com.mycat.monoeshop.WebApp;
 import com.mycat.monoeshop.model.Result;
 import com.mycat.monoeshop.service.rest.SessionService;
 
@@ -55,7 +50,7 @@ public class SecurityInterceptor implements HandlerInterceptor {
 			return false;
 		}
 		Optional<Cookie> opt = Stream.of(cookies)
-				.filter(cookie -> cookie != null && App.SESSION_KEY.equals(cookie.getName())).findFirst();
+				.filter(cookie -> cookie != null && WebApp.SESSION_KEY.equals(cookie.getName())).findFirst();
 
 		if (opt.isPresent()) {
 			Cookie cookie = opt.get();

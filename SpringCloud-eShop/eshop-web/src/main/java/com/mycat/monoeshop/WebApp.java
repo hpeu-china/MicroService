@@ -12,10 +12,10 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
  */
 @EnableFeignClients
 @SpringCloudApplication
-public class App{
+public class WebApp {
 	public static final String SESSION_KEY = "SESSION";
 
 	public static void main(String[] args) {
-		SpringApplication.run(App.class, args);
+		SpringApplication.run(WebApp.class, args);
 	}
 }

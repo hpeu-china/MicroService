@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mycat.monoeshop.App;
+import com.mycat.monoeshop.WebApp;
 import com.mycat.monoeshop.model.CartRecord;
 import com.mycat.monoeshop.model.Result;
 import com.mycat.monoeshop.service.rest.CartService;
@@ -32,14 +32,14 @@ public class CartController {
 
 	@RequestMapping("records")
 	@ResponseBody
-	public List<CartRecord> getProductsByUsername(@CookieValue(App.SESSION_KEY) String sessionId) {
+	public List<CartRecord> getProductsByUsername(@CookieValue(WebApp.SESSION_KEY) String sessionId) {
 		LOGGER.info("get cart for user " + sessionId);
 		return cartService.getProductsByUsername("SESSION="+sessionId);
 	}
 
 	@RequestMapping("add-cart")
 	@ResponseBody
-	public Result<String> addProductToCart(@CookieValue(App.SESSION_KEY) String sessionId,
+	public Result<String> addProductToCart(@CookieValue(WebApp.SESSION_KEY) String sessionId,
 			@RequestBody CartRecord cartRecord) {
 		cartRecord.setUsername(sessionId);
 		LOGGER.info("add goods to cart  " + cartRecord);

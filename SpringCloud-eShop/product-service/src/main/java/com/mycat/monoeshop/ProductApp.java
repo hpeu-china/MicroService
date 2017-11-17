@@ -14,9 +14,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @MapperScan("com.mycat.monoeshop.mapper")
 @EnableDiscoveryClient
-public class App {
+public class ProductApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(App.class, args);
+		SpringApplication.run(ProductApp.class, args);
 	}
 }

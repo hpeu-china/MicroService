@@ -1,10 +1,12 @@
 spring:
   application:
-    name: micro-gateway
+    name: eshop-zuul-gateway
   redis:
-    host: 192.168.18.134
+    host: 127.0.0.1
     port: 6379
     #password:
+  zipkin:
+    base-url: http://127.0.0.1:8053
 info:
   app:
      name: ${spring.application.name}
@@ -23,7 +25,7 @@ eureka:
     prefer-ip-address: true
   client:
     healthcheck:
-       enabled: true
+      enabled: true
     registerWithEureka: true
     fetchRegistry: true
     service-url:

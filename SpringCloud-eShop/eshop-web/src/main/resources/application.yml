@@ -1,6 +1,13 @@
 spring:
   application:
     name: eshop-web
+  boot:
+    admin:
+      client:
+        prefer-ip: true
+        enabled: true
+  zipkin:
+    base-url: http://127.0.0.1:8053
 info:
   app:
      name: ${spring.application.name}
@@ -10,7 +17,9 @@ server:
   context-path: /
   tomcat:
     uri-encoding: UTF-8
-  
+feign:
+  hystrix:
+    enabled: true
 logging:
   config: classpath:logback.xml
 eureka:
@@ -20,8 +29,11 @@ eureka:
   client:
     healthcheck:
        enabled: true
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: true
     service-url:
       defaultZone: http://127.0.0.1:8030/eureka/
-  
+
+management:
+  security:
+    enabled: false

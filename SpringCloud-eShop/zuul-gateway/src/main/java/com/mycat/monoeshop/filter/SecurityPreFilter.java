@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 
-import com.mycat.monoeshop.App;
+import com.mycat.monoeshop.ZuulApp;
 import com.mycat.monoeshop.model.Account;
 import com.mycat.monoeshop.model.Result;
 import com.mycat.monoeshop.model.ResultEnum;
@@ -46,7 +46,7 @@ public class SecurityPreFilter extends ZuulFilter {
         
         HttpSession session = getContext().getRequest().getSession();
         Stream.of(getContext().getRequest().getCookies()).forEach(a -> {System.out.println("yyy cookie "+a.getName()+" "+a.getValue());});
-        String accountStr = (String) session.getAttribute(App.SESSION_KEY);
+        String accountStr = (String) session.getAttribute(ZuulApp.SESSION_KEY);
         Account account = JacksonUtil.decode(accountStr, Account.class);
         LOGGER.info("sessionid "+session.getId()+"  account: {}", account);
         if (account != null) {

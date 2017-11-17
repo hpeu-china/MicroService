@@ -14,13 +14,13 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @SpringBootApplication
 @EnableRedisHttpSession
 @EnableZuulProxy
-public class App {
+public class ZuulApp {
 	/**
 	 * 记录用户Session是否登录过
 	 */
 	public final static String SESSION_KEY = "user_sid";
 
 	public static void main(String[] args) {
-		SpringApplication.run(App.class, args);
+		SpringApplication.run(ZuulApp.class, args);
 	}
 }

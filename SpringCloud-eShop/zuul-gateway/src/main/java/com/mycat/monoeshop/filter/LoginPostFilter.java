@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 
 import com.google.common.base.Charsets;
-import com.mycat.monoeshop.App;
+import com.mycat.monoeshop.ZuulApp;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
@@ -77,7 +77,7 @@ public class LoginPostFilter extends ZuulFilter {
 		if (StringUtils.isNotEmpty(result)) {
 			HttpSession session = context.getRequest().getSession();
 			tokenId = session.getId();
-			session.setAttribute(App.SESSION_KEY, result);
+			session.setAttribute(ZuulApp.SESSION_KEY, result);
 			session.setMaxInactiveInterval(60 * 60 * 12);
 			LOGGER.info("login post filter result: {}, tokenId: {}", result, tokenId);
 		}

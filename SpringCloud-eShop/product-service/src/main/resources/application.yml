@@ -3,7 +3,7 @@ spring:
     name: eshop-product-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.18.134:3306/HPE_APP?useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/HPE_APP?useSSL=false
     username: lession
     password: mypass
     driver-class-name: com.mysql.jdbc.Driver
@@ -23,6 +23,8 @@ spring:
     data: classpath:demo-data.sql
     initialize: true
     continueOnError: true
+  zipkin:
+    base-url: http://127.0.0.1:8053
 info:
   app:
      name: ${spring.application.name}

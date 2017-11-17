@@ -20,7 +20,7 @@ import com.mycat.monoeshop.model.Product;
  * @author: Leader us
  */
 
-@FeignClient(name = "micro-gateway", fallback = ProductService.HystrixProductService.class)
+@FeignClient(name = "eshop-zuul-gateway", fallback = ProductService.HystrixProductService.class)
 public interface ProductService {
 
 	@GetMapping("/products/all")

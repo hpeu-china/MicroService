@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mycat.monoeshop.App;
+import com.mycat.monoeshop.ZuulApp;
 import com.mycat.monoeshop.model.Result;
 import com.mycat.monoeshop.model.ResultEnum;
 
@@ -30,7 +30,7 @@ public class SessionController {
         Result result = null;
         LOGGER.info("session cookied: {}",Arrays.toString(request.getCookies()));
         Stream.of(request.getCookies()).forEach(a -> {System.out.println("xxx cookie "+a.getName()+" "+a.getValue());});
-        String sessionToken = (String) request.getSession().getAttribute(App.SESSION_KEY);
+        String sessionToken = (String) request.getSession().getAttribute(ZuulApp.SESSION_KEY);
 
         if (StringUtils.isEmpty(sessionToken)) {
         	LOGGER.warn("no session key found ,shoud login ");

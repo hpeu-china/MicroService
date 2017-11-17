@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mycat.monoeshop.App;
+import com.mycat.monoeshop.WebApp;
 import com.mycat.monoeshop.service.rest.AccountService;
 
 /**
@@ -32,7 +32,7 @@ public class AccountController {
 		LOGGER.info("login handle "+username);
 		String token = accountService.login(username, password);
 		if (token != null) {
-			Cookie cookie = new Cookie(App.SESSION_KEY, token);
+			Cookie cookie = new Cookie(WebApp.SESSION_KEY, token);
 			cookie.setMaxAge(24 * 60 * 60);
 			cookie.setPath("/");
 			response.addCookie(cookie);

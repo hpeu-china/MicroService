@@ -16,7 +16,7 @@ import com.mycat.monoeshop.model.ResultEnum;
  * @date: 27/08/2017
  * @author: Leader us
  */
-@FeignClient(name = "micro-gateway", fallback = SessionService.HystrixSessionService.class)
+@FeignClient(name = "eshop-zuul-gateway", fallback = SessionService.HystrixSessionService.class)
 public interface SessionService {
     Logger LOGGER = LoggerFactory.getLogger(SessionService.class);
     public static final int RESULT_SUCCESS = 200;

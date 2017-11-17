@@ -6,14 +6,13 @@
 		<artifactId>Springcloud_eShop</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<name>sc_eureka-server</name>
-	<artifactId>sc_eureka-server</artifactId>
+	<name>eureka-server</name>
+	<artifactId>sc-eureka-server</artifactId>
 	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
-			<version>${spring.cloud.version}</version>
 		</dependency>
 	</dependencies>
 
