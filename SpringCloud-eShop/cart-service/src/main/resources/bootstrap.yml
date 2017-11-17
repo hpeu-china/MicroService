@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: eshop-cart-service
+  cloud:
+    config:
+      uri: http://127.0.0.1:8051
+      label: master
+      profile: online

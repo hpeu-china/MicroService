@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: eshop-zuul-gateway
+  cloud:
+    config:
+      uri: http://127.0.0.1:8051
+      label: master
+      profile: online

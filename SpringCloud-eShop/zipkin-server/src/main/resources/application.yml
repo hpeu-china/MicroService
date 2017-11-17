@@ -1,22 +1,12 @@
 spring:
   application:
-    name: eshop-config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/hpeu-china/MicroService
-          searchPaths: /SpringCloud-eShop/config-server/repository/{application}
-#          basedir: repository
-#          username:
-#          password:
-      label: master
+    name: eshop-admin-server
 info:
   app:
     name: ${spring.application.name}
     version: v1.0.0
 server:
-  port: 8051
+  port: 8053
   context-path: /
   tomcat:
     uri-encoding: UTF-8
@@ -28,7 +18,7 @@ eureka:
     prefer-ip-address: true
   client:
     healthcheck:
-      enabled: true
+       enabled: true
     registerWithEureka: true
     fetchRegistry: true
     service-url:
