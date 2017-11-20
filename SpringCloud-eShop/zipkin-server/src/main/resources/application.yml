@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eshop-admin-server
+    name: eshop-zipkin-server
 info:
   app:
     name: ${spring.application.name}
