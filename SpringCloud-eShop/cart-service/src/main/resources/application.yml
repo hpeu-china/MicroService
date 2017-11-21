@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: eshop-cart-service
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    #password:
+  zipkin:
+    base-url: http://127.0.0.1:8053
+info:
+  app:
+    name: ${spring.application.name}
+    version: v1.0.0
+server:
+  port: 8035
+  context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+
+logging:
+  config: classpath:logback.xml
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    healthcheck:
+      enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8030/eureka/

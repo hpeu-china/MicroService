@@ -33,7 +33,7 @@
     </dependencies>
 
     <build>
-        <finalName>eshop_sc_config_server</finalName>
+        <finalName>eshop_sc_turbine_server</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

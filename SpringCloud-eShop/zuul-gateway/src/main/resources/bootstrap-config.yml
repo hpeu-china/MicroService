@@ -3,7 +3,12 @@ spring:
     name: eshop-zuul-gateway
   cloud:
     config:
-      enabled: false
+      uri: http://127.0.0.1:8051
+      label: master
+      profile: online
+      discovery:
+        enabled: true
+        service-id: eshop-config-server
 eureka:
   client:
     service-url:
