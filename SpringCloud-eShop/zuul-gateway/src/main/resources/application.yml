@@ -38,9 +38,18 @@ zuul:
   ignored-services: '*'
   retryable: true
   routes:
+    nginxa:
+      path: /service-a/**
+      url: http://127.0.0.1:8080
+    nginxb:
+      path: /service-b/**
+      url: http://127.0.0.1:8081
+    feign:
+      path: /feign/**
+      url: forward:/feign
     session:
       path: /session/**
-      url: forward:/session  
+      url: forward:/session
     account:
       path: /account/**
       serviceId: eshop-auth-service
