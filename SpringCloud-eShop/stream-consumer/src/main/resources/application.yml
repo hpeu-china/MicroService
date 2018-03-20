@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: stream-consumer
+  cloud:
+    stream:
+      default-binder: myKafka
+      #配置一个kafka
+#      kafka:
+#        binder:
+#          brokers: 127.0.0.1:9092
+#          zkNodes: 127.0.0.1:2181
+      #配置多个kafka
+      binders:
+        myKafka:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      brokers: 127.0.0.1:9092
+                      zkNodes: 127.0.0.1:2181
+      bindings:
+        myInput:
+          binder: myKafka
+          consumer:
+            headerMode: raw
+          producer:
+            headerMode: raw
+          destination: test
+#          content-type: application/json
+#          group: cloud-test2-group1
+server:
+  port: 8062
+  context-path: /
+  tomcat:
+    uri-encoding: UTF-8

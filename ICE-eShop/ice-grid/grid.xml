@@ -3,6 +3,7 @@
 		<properties id="props">
 			<property name="Ice.ThreadPool.Server.Size" value="10" />
 		</properties>
+
 		<server-template id="AccountServiceTemplate">
 			<parameter name="id" />
 			<icebox id="AccountService${id}" exe="java" activation="on-demand" >
@@ -12,13 +13,14 @@
 				<option>com.zeroc.IceBox.Server</option>
 				<env>CLASSPATH=/root/ice_eshop/auth-service/target/*</env>
 				<service name="AccountService"
-					entry="com.mycat.eshop.service.impl.AccountServiceBox">
+						 entry="com.mycat.eshop.service.impl.AccountServiceBox">
 					<adapter name="AccountService" id="AccountService${id}"
 						endpoints="default" replica-group="AccountServiceRep">
 					</adapter>
 				</service>
 			</icebox>
 		</server-template>
+
 		<server-template id="ProductServiceTemplate">
 			<parameter name="id" />
 			<icebox id="ProductService${id}" exe="java" activation="on-demand" >
@@ -56,6 +58,7 @@
 			<load-balancing type="round-robin" n-replicas="0" />
 			<object identity="AccountService" type="::eshop::service::AccountService" />
 		</replica-group>
+
 		<replica-group id="ProductServiceRep">
 			<load-balancing type="round-robin" n-replicas="0" />
 			<object identity="ProductService" type="::eshop::service::ProductService" />
@@ -68,10 +71,9 @@
 			<server-instance template="AccountServiceTemplate"		id="1" />
 			<server-instance template="AccountServiceTemplate"		id="2" />
 			<server-instance template="ProductServiceTemplate"		id="1" />
-			<server-instance template="CartServiceTemplate"		        id="1" />
+			<server-instance template="CartServiceTemplate"		    id="1" />
 		</node>
 		<node name="node2">
-
 		</node>
 	</application>
 </icegrid>

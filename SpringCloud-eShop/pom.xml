@@ -34,7 +34,9 @@
 		<module>config-server</module>
         <module>turbine-server</module>
         <module>zipkin-server</module>
-    </modules>
+        <module>stream-provider</module>
+		<module>stream-consumer</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>

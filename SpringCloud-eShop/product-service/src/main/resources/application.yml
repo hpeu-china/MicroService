@@ -33,7 +33,7 @@ server:
   port: 8036
   context-path: /
   tomcat:
-    uri-encoding: UTF-8    
+    uri-encoding: UTF-8
 
 logging:
   config: classpath:logback.xml
