@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ribbon-consumer
+info:
+  app:
+    name: ${spring.application.name}
+    version: v1.0.0
+logging:
+  config: classpath:logback.xml
+server:
+  port: 8070
+  context-path: /
+  tomcat:
+    uri-encoding: UTF-8    
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8030/eureka/

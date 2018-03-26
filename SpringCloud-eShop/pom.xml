@@ -36,6 +36,8 @@
         <module>zipkin-server</module>
         <module>stream-provider</module>
 		<module>stream-consumer</module>
+        <module>ribbon-provider</module>
+		<module>ribbon-consumer</module>
 	</modules>
 
 	<dependencyManagement>
