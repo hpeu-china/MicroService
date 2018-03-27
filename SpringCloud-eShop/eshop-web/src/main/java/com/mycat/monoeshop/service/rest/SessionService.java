@@ -1,14 +1,13 @@
 package com.mycat.monoeshop.service.rest;
 
+import com.mycat.monoeshop.model.Result;
+import com.mycat.monoeshop.model.ResultEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
-
-import com.mycat.monoeshop.model.Result;
-import com.mycat.monoeshop.model.ResultEnum;
 
 /**
  * Desc:
@@ -20,6 +19,7 @@ import com.mycat.monoeshop.model.ResultEnum;
 public interface SessionService {
     Logger LOGGER = LoggerFactory.getLogger(SessionService.class);
     public static final int RESULT_SUCCESS = 200;
+
     @GetMapping(value = "/session/token")
     Result tokenCheck(@RequestHeader("Cookie") String sessionId);
 
@@ -31,6 +31,4 @@ public interface SessionService {
             return new Result(ResultEnum.ERROR);
         }
     }
-
-	
 }
