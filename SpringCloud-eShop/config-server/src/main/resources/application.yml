@@ -1,16 +1,20 @@
 spring:
   application:
     name: eshop-config-server
+#  profiles:
+#    active: native
   cloud:
     config:
       server:
+#        native:
+#          search-locations: /Users/gao/Documents/workspace/hpe/MicroService/SpringCloud-eShop/config-server/repository/{application}
         git:
           uri: https://github.com/hpeu-china/MicroService
           searchPaths: /SpringCloud-eShop/config-server/repository/{application}
 #          basedir: repository
 #          username:
 #          password:
-      label: master
+#      label: master
 info:
   app:
     name: ${spring.application.name}
