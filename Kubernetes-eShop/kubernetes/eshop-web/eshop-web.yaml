@@ -29,7 +29,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: eshop-web:v1
+      - image: philophilo/eshop-web:v1
         name: eshop
         volumeMounts:
         - name: config-volume
