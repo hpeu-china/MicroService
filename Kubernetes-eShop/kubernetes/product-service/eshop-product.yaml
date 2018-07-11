@@ -28,7 +28,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: eshop-product-image:v1
+      - image: philophilo/eshop-product-image:v1
         name: eshop-product
         ports:
         - containerPort: 8036
