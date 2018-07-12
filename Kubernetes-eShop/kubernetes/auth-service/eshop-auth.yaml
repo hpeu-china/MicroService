@@ -28,7 +28,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: eshop-auth-image:v1
+      - image: philophilo/eshop-auth-image:v1
         name: eshop-auth
         volumeMounts:
         - name: config-volume
